@@ -2,19 +2,18 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useHTTP from "../../hooks/useHTTP";
 import { repositoryType } from "../../types/repositoryType";
+import RepoTypeInput from "../RepoTypeInput";
 import style from "./index.module.scss";
 
 const UserRepos: React.FC = (): JSX.Element => {
   const { userName } = useParams();
+
+  const [repoTypeDisplayed, setRepoTypeDisplayed] = useState("repos");
+
   const [repos, setRepos] = useState<repositoryType[]>([]);
   const [starred, setStarred] = useState<repositoryType[]>([]);
-
   const [reposLanguages, setReposLanguages] = useState<string[]>([]);
   const [starredLanguages, setStarredLanguages] = useState<string[]>([]);
-  console.log("repos: ", repos);
-  console.log("starred: ", starred);
-  console.log("reposLanguages: ", reposLanguages);
-  console.log("starredLanguages: ", starredLanguages);
 
   const { sendRequest: getUserRepos } = useHTTP();
   const { sendRequest: getUserStarred } = useHTTP();
@@ -72,7 +71,27 @@ const UserRepos: React.FC = (): JSX.Element => {
     setStarredLanguages(starredLanguages);
   };
 
-  return <div className={style.container}></div>;
+  return (
+    <div className={style.container}>
+      <div className={style.inputsField}>
+        <RepoTypeInput
+          value="repos"
+          title="Repositories"
+          amount={repos.length}
+          repoTypeDisplayed={repoTypeDisplayed}
+          setRepoTypeDisplayed={setRepoTypeDisplayed}
+        />
+
+        <RepoTypeInput
+          value="starred"
+          title="Starred"
+          amount={starred.length}
+          repoTypeDisplayed={repoTypeDisplayed}
+          setRepoTypeDisplayed={setRepoTypeDisplayed}
+        />
+      </div>
+    </div>
+  );
 };
 
 export default UserRepos;
