@@ -10,7 +10,6 @@ type UserInformationProps = {
 const UserInformation: React.FC<UserInformationProps> = ({
   userDetails,
 }): JSX.Element => {
-  console.log("userDetails: ", userDetails);
   const { avatar_url, bio, blog, company, location, name, twitter_username } =
     userDetails;
 
