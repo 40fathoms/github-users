@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import Loading from "../components/Loading";
 import useHTTP from "../hooks/useHTTP";
 import { userDetailType } from "../types/userDetailType";
 import style from "./userDetail.module.scss";
@@ -9,6 +10,7 @@ const UserDetail: React.FC = (): JSX.Element => {
   const { userName } = useParams();
 
   const [userDetails, setUserDetails] = useState<userDetailType | null>(null);
+  console.log("userDetails: ", userDetails);
 
   const { isLoading: loadingUserData, sendRequest: getUserDetails } = useHTTP();
 
@@ -40,7 +42,7 @@ const UserDetail: React.FC = (): JSX.Element => {
   };
 
   if (loadingUserData || !userDetails) {
-    return <p>loading</p>;
+    return <Loading />;
   }
 
   return (

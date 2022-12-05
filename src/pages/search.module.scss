@@ -3,6 +3,7 @@
   width: 100vw;
   display: grid;
   place-items: center;
+  background: var(--gray-900);
 }
 
 .input {
@@ -10,7 +11,11 @@
 }
 
 .anchor {
-  background: linear-gradient(89.89deg, #0056a6 -30.01%, #0587ff 125.65%);
+  background: linear-gradient(
+    89.89deg,
+    var(--blue-1) -30.01%,
+    var(--blue-2) 125.65%
+  );
   width: fit-content;
   height: 3.2rem;
   padding: 0 2rem;
