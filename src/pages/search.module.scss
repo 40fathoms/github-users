@@ -11,8 +11,9 @@
 
 .anchor {
   background: linear-gradient(89.89deg, #0056a6 -30.01%, #0587ff 125.65%);
-  width: 12rem;
+  width: fit-content;
   height: 3.2rem;
+  padding: 0 2rem;
   border-radius: 4.2rem;
   display: grid;
   place-items: center;

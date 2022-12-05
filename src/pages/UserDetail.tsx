@@ -1,6 +1,48 @@
+import { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import useHTTP from "../hooks/useHTTP";
+import { userDetailType } from "../types/userDetailType";
 import style from "./userDetail.module.scss";
 
 const UserDetail: React.FC = (): JSX.Element => {
+  const navigate = useNavigate();
+  const { userName } = useParams();
+
+  const [userDetails, setUserDetails] = useState<userDetailType | null>(null);
+
+  const { isLoading: loadingUserData, sendRequest: getUserDetails } = useHTTP();
+
+  useEffect(() => {
+    getUserDetails(
+      {
+        url: `https://api.github.com/users/${userName}`,
+      },
+      manageUserDetail,
+      redirectOnError
+    );
+  }, []);
+
+  const redirectOnError = () => {
+    navigate("/error");
+  };
+
+  const manageUserDetail = (fetchedDetails: any) => {
+    const formattedData = {
+      name: fetchedDetails.name,
+      bio: fetchedDetails.bio,
+      company: fetchedDetails.company,
+      location: fetchedDetails.location,
+      blog: fetchedDetails.blog,
+      twitter_username: fetchedDetails.twitter_username,
+    };
+
+    setUserDetails(formattedData);
+  };
+
+  if (loadingUserData || !userDetails) {
+    return <p>loading</p>;
+  }
+
   return (
     <>
       <p>a</p>
