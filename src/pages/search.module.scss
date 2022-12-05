@@ -1,0 +1,25 @@
+.main {
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  place-items: center;
+}
+
+.input {
+  padding: 1rem;
+}
+
+.anchor {
+  background: linear-gradient(89.89deg, #0056a6 -30.01%, #0587ff 125.65%);
+  width: 12rem;
+  height: 3.2rem;
+  border-radius: 4.2rem;
+  display: grid;
+  place-items: center;
+
+  transition: all 300ms ease;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
