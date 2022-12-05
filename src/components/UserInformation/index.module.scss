@@ -4,6 +4,10 @@
   align-items: center;
   width: 100%;
 
+  @media (min-width: 600px) {
+    width: 20rem;
+  }
+
   @media (min-width: 1000px) {
     width: 32rem;
   }
@@ -61,6 +65,7 @@
   line-height: 2.3rem;
   color: var(---gray-800);
   margin-bottom: 0.5rem;
+  text-align: center;
 
   @media (min-width: 1000px) {
     font-size: 2.4rem;
@@ -74,6 +79,7 @@
   line-height: 1.4rem;
   color: var(--gray-400);
   margin-bottom: 0.5rem;
+  text-align: center;
 
   @media (min-width: 1000px) {
     font-size: 1.6rem;
@@ -84,7 +90,7 @@
 .desktopInformation {
   margin-top: 3.6rem;
 
-  @media (max-width: 999px) {
+  @media (max-width: 599px) {
     display: none;
   }
 }

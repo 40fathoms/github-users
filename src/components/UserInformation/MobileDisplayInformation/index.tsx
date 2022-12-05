@@ -34,8 +34,7 @@ const MobileDisplayInformation: React.FC<MobileDisplayInformationProps> = ({
       {isDisplayVisible && (
         <div className={style.display}>
           <DisplayInformation
-            // company={company}
-            company="asas"
+            company={company}
             location={location}
             blog={blog}
             twitter_username={twitter_username}
