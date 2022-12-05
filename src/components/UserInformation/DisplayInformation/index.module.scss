@@ -1,0 +1,25 @@
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+
+  li {
+    list-style: none;
+    font-size: 1.4rem;
+    line-height: 1.6rem;
+
+    color: var(--blue-2);
+
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+}
+
+.listContent {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}

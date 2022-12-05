@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (min-width: 1000px) {
+    display: none;
+  }
+}
+
+.text {
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  margin-top: 2.4rem;
+  margin-bottom: 1.1rem;
+
+  color: var(--blue-2);
+}
+
+.button {
+  background: transparent;
+  border: none;
+  margin-bottom: 1.7rem;
+
+  &.active {
+    transform: rotate(180deg);
+  }
+}
+
+.display {
+  background: var(--gray-050);
+  border-radius: 1.6rem;
+  width: 100%;
+  padding: 1.7rem;
+}

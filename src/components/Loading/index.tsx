@@ -1,4 +1,4 @@
-import style from "./loading.module.scss";
+import style from "./index.module.scss";
 
 const Loading: React.FC = (): JSX.Element => {
   return (

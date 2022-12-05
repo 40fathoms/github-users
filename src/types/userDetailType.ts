@@ -1,8 +1,9 @@
 export type userDetailType = {
-  name: string;
-  bio?: string;
-  company?: string;
-  location?: string;
-  blog?: string;
-  twitter_username?: string;
+  name: string | null;
+  bio: string | null;
+  company: string | null;
+  location: string | null;
+  blog: string | null;
+  twitter_username: string | null;
+  avatar_url: string;
 };
