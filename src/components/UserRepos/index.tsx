@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useHTTP from "../../hooks/useHTTP";
+import Book from "../../SVGs/Book";
+import Star from "../../SVGs/Star";
 import { repositoryType } from "../../types/repositoryType";
 import RepoTypeInput from "../RepoTypeInput";
 import style from "./index.module.scss";
@@ -75,6 +77,7 @@ const UserRepos: React.FC = (): JSX.Element => {
     <div className={style.container}>
       <div className={style.inputsField}>
         <RepoTypeInput
+          icon={<Book />}
           value="repos"
           title="Repositories"
           amount={repos.length}
@@ -83,6 +86,7 @@ const UserRepos: React.FC = (): JSX.Element => {
         />
 
         <RepoTypeInput
+          icon={<Star />}
           value="starred"
           title="Starred"
           amount={starred.length}
