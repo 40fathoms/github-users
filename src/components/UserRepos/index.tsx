@@ -4,6 +4,7 @@ import useHTTP from "../../hooks/useHTTP";
 import Book from "../../SVGs/Book";
 import Star from "../../SVGs/Star";
 import { repositoryType } from "../../types/repositoryType";
+import ReposList from "../ReposList";
 import RepoTypeInput from "../RepoTypeInput";
 import style from "./index.module.scss";
 
@@ -14,6 +15,7 @@ const UserRepos: React.FC = (): JSX.Element => {
 
   const [repos, setRepos] = useState<repositoryType[]>([]);
   const [starred, setStarred] = useState<repositoryType[]>([]);
+
   const [reposLanguages, setReposLanguages] = useState<string[]>([]);
   const [starredLanguages, setStarredLanguages] = useState<string[]>([]);
 
@@ -73,6 +75,27 @@ const UserRepos: React.FC = (): JSX.Element => {
     setStarredLanguages(starredLanguages);
   };
 
+  const getReposData = () => {
+    if (repoTypeDisplayed === "repos") {
+      return {
+        data: repos,
+        languages: reposLanguages,
+      };
+    }
+
+    if (repoTypeDisplayed === "starred") {
+      return {
+        data: starred,
+        languages: starredLanguages,
+      };
+    }
+
+    return {
+      data: [],
+      languages: [],
+    };
+  };
+
   return (
     <div className={style.container}>
       <div className={style.inputsField}>
@@ -94,6 +117,11 @@ const UserRepos: React.FC = (): JSX.Element => {
           setRepoTypeDisplayed={setRepoTypeDisplayed}
         />
       </div>
+
+      <ReposList
+        repos={getReposData().data}
+        reposLanguages={getReposData().languages}
+      />
     </div>
   );
 };

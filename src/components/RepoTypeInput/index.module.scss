@@ -26,8 +26,13 @@
   }
 
   @media (min-width: 600px) {
-    width: 20rem;
+    width: fit-content;
     gap: 1.8rem;
+
+    p {
+      font-size: 1.8rem;
+      line-height: 2.1rem;
+    }
   }
 
   transition: all 300ms ease-in-out;
