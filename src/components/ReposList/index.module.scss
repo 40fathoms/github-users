@@ -1,5 +1,13 @@
 .filterField {
   margin: 3.2rem 0 0;
+
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 1rem;
+
+  @media (min-width: 1000px) {
+    flex-direction: row;
+  }
 }
 
 .input {
@@ -7,10 +15,10 @@
   border-bottom: solid 1px #f4f4f4;
   position: relative;
 
-  svg {
+  & > svg {
     position: absolute;
     top: 50%;
-    left: 0.5rem;
+    right: 0.5rem;
     transform: translate(0, -50%);
   }
 
@@ -22,10 +30,48 @@
     font-size: 1.8rem;
     line-height: 2.1rem;
     color: var(--black);
-    padding: 1rem 4rem;
+    padding: 1rem 4rem 1rem 1rem;
 
     &::placeholder {
-      color: var(--gray-400);
+      color: transparent;
     }
+  }
+
+  @media (min-width: 600px) {
+    padding: 1rem 4rem;
+
+    svg {
+      left: 0.5rem;
+    }
+
+    input {
+      &::placeholder {
+        color: var(--gray-400);
+      }
+    }
+  }
+}
+
+.mobileButtons {
+  position: absolute;
+  top: 50%;
+  left: 0.5rem;
+  transform: translate(0, -50%);
+
+  align-items: center;
+  gap: 1rem;
+
+  @media (min-width: 600px) {
+    display: none !important;
+  }
+}
+
+.buttons {
+  display: none;
+
+  @media (min-width: 600px) {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
   }
 }

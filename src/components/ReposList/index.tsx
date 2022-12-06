@@ -3,6 +3,7 @@ import useDebounce from "../../hooks/useDebounce";
 import MagnifyingGlass from "../../SVGs/MagnifyingGlass";
 import type { repositoryType } from "../../types/repositoryType";
 import RepoCard from "../RepoCard";
+import RepoFilterButton from "../RepoFilterButton";
 import style from "./index.module.scss";
 
 type ReposListProps = {
@@ -16,6 +17,7 @@ const ReposList: React.FC<ReposListProps> = ({
 }): JSX.Element => {
   const defaultRepos = repos;
 
+  const [dispĺayMobileButtons, setDisplayMobileButtons] = useState(true);
   const [searchValue, setSearchValue] = useState("");
   const debouncedValue = useDebounce<string>(searchValue, 300);
 
@@ -43,11 +45,27 @@ const ReposList: React.FC<ReposListProps> = ({
     <div className={style.reposContainer}>
       <div className={style.filterField}>
         <div className={style.input}>
+          <div
+            className={style.mobileButtons}
+            style={{
+              display: dispĺayMobileButtons ? "flex" : "none",
+            }}
+          >
+            <RepoFilterButton label="Type" />
+            <RepoFilterButton label="Language" />
+          </div>
           <MagnifyingGlass />
           <input
             placeholder="Search here"
             onChange={(e) => setSearchValue(e.target.value)}
+            onFocus={() => setDisplayMobileButtons(false)}
+            onBlur={() => setDisplayMobileButtons(true)}
           />
+        </div>
+
+        <div className={style.buttons}>
+          <RepoFilterButton label="Type" />
+          <RepoFilterButton label="Language" />
         </div>
       </div>
 

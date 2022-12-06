@@ -1,0 +1,38 @@
+.button {
+  border: solid 1px transparent;
+  background: linear-gradient(
+    89.89deg,
+    var(--blue-1) -30.01%,
+    var(--blue-2) 125.65%
+  );
+  border-radius: 4.2rem;
+  font-weight: 400;
+  font-size: 1.4rem;
+  line-height: 1.6rem;
+  color: var(--white);
+  padding: 0.8rem 1.2rem;
+
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  position: relative;
+
+  transition: all 300ms ease;
+
+  svg {
+    path {
+      stroke: var(--white);
+    }
+  }
+
+  &:hover {
+    border-color: var(--blue-1);
+    background: var(--white);
+    color: var(--blue-2);
+    svg {
+      path {
+        stroke: var(--blue-2);
+      }
+    }
+  }
+}
