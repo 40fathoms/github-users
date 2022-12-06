@@ -36,3 +36,39 @@
     }
   }
 }
+
+.filter {
+  position: relative;
+}
+
+.checkboxes {
+  position: absolute;
+  top: 5rem;
+  background: var(--white);
+  width: 20rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1.6rem;
+  padding: 0.5rem;
+
+  box-shadow: 0px 0px 16px rgba(79, 79, 80, 0.15);
+
+  input {
+    width: auto;
+  }
+
+  label {
+    width: 100%;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 1.9rem;
+    color: var(--black);
+
+    display: flex;
+    align-items: center;
+
+    gap: 0.5rem;
+  }
+}

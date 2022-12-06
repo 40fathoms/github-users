@@ -21,6 +21,16 @@ const ReposList: React.FC<ReposListProps> = ({
   const [searchValue, setSearchValue] = useState("");
   const debouncedValue = useDebounce<string>(searchValue, 300);
 
+  const types = [
+    { value: "forked", label: "Forked" },
+    { value: "archived", label: "Archived" },
+  ];
+
+  const languages = reposLanguages.map((lang) => ({
+    value: lang,
+    label: lang,
+  }));
+
   const [filteredRepos, setFilteredRepos] =
     useState<repositoryType[]>(defaultRepos);
 
@@ -41,6 +51,36 @@ const ReposList: React.FC<ReposListProps> = ({
     });
   }, [debouncedValue]);
 
+  const filterType = (filterArray: string[]) => {
+    setFilteredRepos((repos) => {
+      if (filterArray.includes("all")) {
+        return defaultRepos;
+      }
+
+      const filteredRepos = repos.filter(
+        (repo) =>
+          (repo.archived && filterArray.includes("archived")) ||
+          (repo.forked && filterArray.includes("forked"))
+      );
+
+      return filteredRepos;
+    });
+  };
+
+  const filterLanguage = (filterArray: string[]) => {
+    setFilteredRepos((repos) => {
+      if (filterArray.includes("all")) {
+        return defaultRepos;
+      }
+
+      const filteredRepos = repos.filter((repo) =>
+        filterArray.includes(repo.language)
+      );
+
+      return filteredRepos;
+    });
+  };
+
   return (
     <div className={style.reposContainer}>
       <div className={style.filterField}>
@@ -51,8 +91,12 @@ const ReposList: React.FC<ReposListProps> = ({
               display: dispĺayMobileButtons ? "flex" : "none",
             }}
           >
-            <RepoFilterButton label="Type" />
-            <RepoFilterButton label="Language" />
+            <RepoFilterButton label="Type" data={types} action={filterType} />
+            <RepoFilterButton
+              label="Language"
+              data={languages}
+              action={filterLanguage}
+            />
           </div>
           <MagnifyingGlass />
           <input
@@ -64,8 +108,12 @@ const ReposList: React.FC<ReposListProps> = ({
         </div>
 
         <div className={style.buttons}>
-          <RepoFilterButton label="Type" />
-          <RepoFilterButton label="Language" />
+          <RepoFilterButton label="Type" data={types} action={filterType} />
+          <RepoFilterButton
+            label="Language"
+            data={languages}
+            action={filterLanguage}
+          />
         </div>
       </div>
 

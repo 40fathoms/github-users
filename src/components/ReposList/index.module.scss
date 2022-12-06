@@ -30,17 +30,20 @@
     font-size: 1.8rem;
     line-height: 2.1rem;
     color: var(--black);
-    padding: 1rem 4rem 1rem 1rem;
+    padding: 1rem 4rem;
 
     &::placeholder {
       color: transparent;
     }
+
+    &:focus {
+      border: none;
+    }
   }
 
   @media (min-width: 600px) {
-    padding: 1rem 4rem;
-
     svg {
+      position: absolute;
       left: 0.5rem;
     }
 
